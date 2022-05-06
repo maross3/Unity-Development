@@ -8,6 +8,18 @@ Currently there is a PoolMaster script with static methods to spawn and fetch po
 
 ## PoolMaster: 
 
+Calling Pool Master is as easy as: 
+
+`PoolMaster.RollForLoot("Wood", position);`
+or
+`PoolMaster.SpawnObjectAt("Enemies", "Skele", position);`
+
+Pool master static functions: 
+
+`public static void SpawnObjectAt(string gen, string objName, Vector3 pos)`
+
+`public static void RollForLoot(string tier, Vector3 pos)`
+
 ![PoolMaster](https://user-images.githubusercontent.com/20687907/167200646-555f0e82-e3e1-4e91-bcbd-926ac1847e00.png)
 
 You define the name of the generator and it's type (currently either pool generator or treasure generator)
