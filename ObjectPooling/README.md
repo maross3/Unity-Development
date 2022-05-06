@@ -6,20 +6,22 @@ Asset Icons: https://assetstore.unity.com/packages/tools/utilities/asseticons-10
 This object pool was designed to streamline 'spawning' objects and setting up multiple enemy types/loot in quick succession. 
 Currently there is a PoolMaster script with static methods to spawn and fetch pooled objects.
 
-PoolMaster: 
+## PoolMaster: 
 
 ![PoolMaster](https://user-images.githubusercontent.com/20687907/167200646-555f0e82-e3e1-4e91-bcbd-926ac1847e00.png)
 
 You define the name of the generator and it's type (currently either pool generator or treasure generator)
 
-Pool generator:
+## Pool generator:
 
 ![PoolGenerator](https://user-images.githubusercontent.com/20687907/167200726-a9e1a087-3812-4052-ad89-397a3a4b323c.png)
+
 Here you define how many objects to pool, if you want it to despawn and assign the object's prefab
 
-Treasure Generator:
+## Treasure Generator:
 
 ![TreasureGenerator](https://user-images.githubusercontent.com/20687907/167200873-4691f0d6-914b-4589-8f64-8ecfaac53d1c.png)
+
 The treasure generator rolls for loot in it's treasure pools using the drop modifier. 
 
 This script will generate and populate folders in your project.
