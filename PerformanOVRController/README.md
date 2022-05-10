@@ -1,4 +1,4 @@
-#Performant OVR controller
+# Performant OVR controller
 
 Observer pattern player controller utilizing a state pattern for the hands and walking locomotion. Also has a teleporter.
 
