@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-namespace ElectroMag._DevVR
+namespace VR
 {
-    public class EMPlayerController : MonoBehaviour, IPointerCaptureEvent
+    public class PlayerController : MonoBehaviour, IPointerCaptureEvent
     {
         [SerializeField] private Transform centerEyeAnchor;
         [SerializeField] private GameObject teleportObject;
@@ -19,8 +19,8 @@ namespace ElectroMag._DevVR
         private ILocomotion _locomotion;
         private LocomotionType _curLocomotion;
         
-        private EMStateWalker _walk;
-        private EMTeleporter _teleport;
+        private StateWalker _walk;
+        private Teleporter _teleport;
         
         private delegate void ProcessingInputs();
         private ProcessingInputs _processInput;
@@ -48,8 +48,8 @@ namespace ElectroMag._DevVR
         
         void Start()
         {
-            _teleport = teleportObject.GetComponent<EMTeleporter>();
-            _walk = gameObject.GetComponent<EMStateWalker>();
+            _teleport = teleportObject.GetComponent<Teleporter>();
+            _walk = gameObject.GetComponent<StateWalker>();
             
             _curLocomotion = startLocomotionType;
             SetLocomotionType(_curLocomotion);
