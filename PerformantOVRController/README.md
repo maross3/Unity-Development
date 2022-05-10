@@ -1,6 +1,6 @@
 # Performant OVR controller
 
-Observer pattern player controller utilizing a state pattern for the hands and walking locomotion. Also has a teleporter.
+Observer pattern player controller utilizing a state pattern for the hands and walking locomotion. Also has a teleporter. (Grabbing coming soon)
 
 
 ![Controller](https://user-images.githubusercontent.com/20687907/167531913-4bcdbdbd-975d-4077-9d65-44ffb37c13d1.png)
