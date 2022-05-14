@@ -5,6 +5,7 @@ Shader "MyShaders/RotateRect"
         _Color("Square Color", Color) = (1.0,1.0,0,1.0)
         _Radius("Radius", Float) = 0.5
         _Size("Size", Float) = 0.3
+        _Anchor("Anchor", Vector) = (0.15, 0.15, 0, 0)
     }
     SubShader
     {
@@ -37,12 +38,22 @@ Shader "MyShaders/RotateRect"
             fixed4 _Color;
             float _Radius;
             float _Size;
+            float4 _Anchor;
             
             float rect(float2 pt, float2 size, float2 center){
                 float2 p = pt - center;
                 float2 halfsize = size * 0.5;
 
                 float2 validSpace = step(-halfsize, p) - step(halfsize, p);
+
+                return validSpace.x * validSpace.y;
+            }
+
+            float rect(float2 pt, float2 anchor, float2 size, float2 center){
+                float2 p = pt - center;
+                float2 halfsize = size * 0.5;
+
+                float2 validSpace = step(-halfsize - anchor, p) - step(halfsize - anchor, p);
 
                 return validSpace.x * validSpace.y;
             }
@@ -65,7 +76,7 @@ Shader "MyShaders/RotateRect"
                 // multiply matrix by pos - center, add back to preserve center pos
                 float2 newPoint = mul(mtrx, pos - center) + center;
                 
-                float3 color = _Color * rect(newPoint, size, center);
+                float3 color = _Color * rect(newPoint, _Anchor.xy, size, center);
                 
                 return fixed4(color, 1.0);
             }
