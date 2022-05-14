@@ -66,6 +66,11 @@ Shader "MyShaders/RotateRect"
                 return float2x2(cosTheta, -sinTheta, sinTheta, cosTheta);
             }
 
+            float2x2 getScaleMatrix(float scale)
+            {
+                return float2x2(scale,0,0,scale);
+            }
+
             fixed4 frag (v2f i) : SV_Target
             {
                 float2 center = float2(cos(_Time.y), sin(_Time.y)) * _Radius;
@@ -74,6 +79,9 @@ Shader "MyShaders/RotateRect"
                 
                 float2x2 mtrx = getRotationMatrix(_Time.y);
                 // multiply matrix by pos - center, add back to preserve center pos
+                float2x2 mtrxScale = getScaleMatrix((sin(_Time.y) + 1) / 3 + 0.5);
+                mtrx = mul(mtrx, mtrxScale);
+                
                 float2 newPoint = mul(mtrx, pos - center) + center;
                 
                 float3 color = _Color * rect(newPoint, _Anchor.xy, size, center);
