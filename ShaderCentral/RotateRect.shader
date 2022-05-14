@@ -6,6 +6,7 @@ Shader "MyShaders/RotateRect"
         _Radius("Radius", Float) = 0.5
         _Size("Size", Float) = 0.3
         _Anchor("Anchor", Vector) = (0.15, 0.15, 0, 0)
+        _TileCount("Tile Count", float) = 6
     }
     SubShader
     {
@@ -24,14 +25,16 @@ Shader "MyShaders/RotateRect"
             struct v2f
             {
                 float4 vertex : SV_POSITION;
-                float4 position : TEXCOORD1;
+                float4 position: TEXCOORD1;
+                float2 uv : TEXCOORD0;
             };
-            
+
             v2f vert (appdata_base v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.position = v.vertex;
+                o.uv = v.texcoord;
                 return o;
             }
 
@@ -39,6 +42,7 @@ Shader "MyShaders/RotateRect"
             float _Radius;
             float _Size;
             float4 _Anchor;
+            float _TileCount;
             
             float rect(float2 pt, float2 size, float2 center){
                 float2 p = pt - center;
@@ -73,8 +77,9 @@ Shader "MyShaders/RotateRect"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float2 center = float2(cos(_Time.y), sin(_Time.y)) * _Radius;
-                float2 pos = i.position * 2.0;
+                //float2 center = float2(cos(_Time.y), sin(_Time.y)) * _Radius;
+                float2 center = _Anchor.zw;
+                float2 pos = frac(i.uv * _TileCount);
                 float2 size = _Size;
                 
                 float2x2 mtrx = getRotationMatrix(_Time.y);
