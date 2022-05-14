@@ -21,7 +21,10 @@ Shader "MyShaders/ColorOverTime"
                 // the float4 _Time's y property = time
                 
                 fixed3 color = fixed3((sin(_Time.y) + 1) / 2, 0, (cos(_Time.y) + 1) / 2);
-                return fixed4(color ,1);
+                
+                return fixed4(color ,1); // red to blue
+                // return fixed4(color ,1).gbra; // green to blue
+                // return fixed4(color ,1).rrra; // greyscale
             }
             ENDCG
         }
