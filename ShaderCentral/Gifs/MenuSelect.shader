@@ -14,16 +14,8 @@ Shader "MyShaders/MenuSelect"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            // make fog work
-            #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
-
-            struct appdata
-            {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
-            };
 
             struct v2f
             {
@@ -31,10 +23,7 @@ Shader "MyShaders/MenuSelect"
                 float4 position: TEXCOORD1;
                 float4 uv: TEXCOORD0;
             };
-
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
-
+            
             v2f vert (appdata_base v)
             {
                 v2f o;
@@ -49,7 +38,7 @@ Shader "MyShaders/MenuSelect"
 
                 // Angle and radius from the current pixel
                 float theta = atan2(pos.y, pos.x) + rotate;
-                float rad = UNITY_TWO_PI/float(sides);
+                float rad = UNITY_TWO_PI / float(sides);
 
                 // Shaping function that modulates the distance
                 float dist = cos(floor(0.5 + theta / rad) * rad-theta) * length(pos);
