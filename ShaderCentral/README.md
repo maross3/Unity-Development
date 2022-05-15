@@ -1,6 +1,12 @@
 # Unity CG Shaders
 
-Located in gifs:
+A project composed of useful shaders and shader functions to be used in the Unity Editor.
+
+## Setup
+
+In the Unity Editor, you may select any of these shaders to apply to any pre-existing material. All of the shaders will be in the `My Shaders` directory. To create a new material, right click in the project view and navigate to `Create -> Material`. Name the material, and select the shader of your choice.
+
+## Examples located in /Gifs
 
 ![Unity_m3vZIjhI0f](https://user-images.githubusercontent.com/20687907/168455126-cadd8ce0-2764-4071-8c07-f5415da689f8.gif)
 
