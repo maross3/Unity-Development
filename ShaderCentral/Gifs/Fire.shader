@@ -38,7 +38,7 @@ Shader "MyShaders/Fire"
                 
                 noise = clamp(noise, -0.8, 0.8);
 
-                // add noise to blur
+                // generate blur
                 float blur = (1.0 - i.uv.x) * 0.3;
                 noise = (noise * blur) + i.uv;
                 
