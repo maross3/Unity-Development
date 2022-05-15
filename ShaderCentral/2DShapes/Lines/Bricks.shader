@@ -41,6 +41,7 @@ Shader "MyShaders/Bricks"
                             smoothstep(halfMortarHeight, halfMortarHeight + edgeThickness, pos.x) +
                                 smoothstep(1 - halfMortarHeight - edgeThickness, 1 - halfMortarHeight, pos.x);
                 
+                // saturate to range [0, 1]
                 return saturate(result);
             }
             
