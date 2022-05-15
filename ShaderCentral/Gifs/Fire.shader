@@ -39,8 +39,8 @@ Shader "MyShaders/Fire"
                 noise = clamp(noise, -0.8, 0.8);
 
                 // add noise to blur
-                float perturb = (1.0 - i.uv.x) * 0.3;
-                noise = (noise * perturb) + i.uv;
+                float blur = (1.0 - i.uv.x) * 0.3;
+                noise = (noise * blur) + i.uv;
                 
                 // tex2D(Sampler2D samp, float2 s), lookup, lookup coords 
                 fixed4 color = tex2D(_MainTex, noise);
