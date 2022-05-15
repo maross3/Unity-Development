@@ -1,6 +1,6 @@
-# brushing up on my shaders
+# Unity CG Shaders
 
-Some cool gifs:
+Located in gifs:
 
 ![Unity_pPN9zeg9uc](https://user-images.githubusercontent.com/20687907/168453190-f4871b21-7d51-4009-b760-fc64cab305d3.gif)
 
