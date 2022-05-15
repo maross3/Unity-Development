@@ -1,4 +1,4 @@
-Shader "MyShaders/RotateRect"
+Shader "MyShaders/Rect"
 {
     Properties
     {
