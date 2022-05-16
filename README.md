@@ -4,6 +4,7 @@
 ### Object pool
 
 * Speed up prototyping and production with an easy-to-use object pool, designed with extensibility in mind.
+* Includes a looting system!
 
 ### OVR controller
  
