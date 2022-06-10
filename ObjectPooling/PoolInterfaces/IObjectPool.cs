@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ElectroMag._DevPooling
+namespace ObjectPooling
 {
     public interface IObjectPool
     {

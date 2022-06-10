@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using ElectroMag._DevPooling;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
-using namespace ObjectPooling
+namespace ObjectPooling
 {
     public class TreasureGenerator : MonoBehaviour, IGenerator
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ElectroMag._DevPooling
+namespace ObjectPooling
 {
     public interface IGenerator
     {

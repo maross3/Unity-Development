@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace ElectroMag._DevPooling
+namespace ObjectPooling
 {
     public class ObjectPool : MonoBehaviour, IObjectPool
     {

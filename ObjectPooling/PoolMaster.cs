@@ -8,7 +8,7 @@ using UnityEngine;
     // to use:
     // PoolMaster.SpawnObjectAt("Fish", "Bass", hook.transform.position);
 
-namespace ElectroMag._DevPooling
+namespace ObjectPooling
 {
     public class PoolMaster : MonoBehaviour
     {
