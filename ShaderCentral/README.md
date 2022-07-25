@@ -4,7 +4,7 @@ A project composed of useful shaders and shader functions to be used in the Unit
 
 ## Setup
 
-In the Unity Editor, you may select any of these shaders to apply to any pre-existing material. You can also create a new material. Right click -> Create -> Material. All of the shaders will be in the `My Shaders` directory. To create a new material, right click in the project view and navigate to `Create -> Material`. Name the material, and select the shader of your choice.
+In the Unity Editor, you may select any of these shaders to apply to any pre-existing material. You can also create a new material. Right click -> Create -> Material. All of the shaders will be in the `My Shaders` directory.
 
 ## Examples Located in /Gifs
 
