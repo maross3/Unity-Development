@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using Utils;
 
@@ -54,14 +52,6 @@ namespace UI
         public virtual void ViewInEditor()
         {
             bounds.GizmoSelectedRect(Color.magenta);
-        }
-        
-        [Button]
-        public void InspectorInvalidate()
-        {
-            Start();
-            Invalidate();
-            Update();
         }
     }
 }
