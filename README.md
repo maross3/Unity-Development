@@ -1,5 +1,11 @@
 # UnityUsefulScripts
- A collection of C# scripts written in Unity, for Unity.
+ A collection of C# scripts written in Unity, for Unity. Come see all the awful broken things I made :D.
+ 
+README TODO:
+* Behavior Tree - needs scene
+* Pathfinding - needs scene
+* MIDI Controller/Synthesizer (PianoLernen)
+* UI Framework
  
 ### Object pool
 
