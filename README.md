@@ -4,9 +4,9 @@
 README TODO:
 * Behavior Tree - needs scene
 * Pathfinding - needs scene
-* Marching Cubes
-* MIDI Controller/Synthesizer (PianoLernen)
-* UI Framework
+* <s>Marching Cubes</s>
+* <s>MIDI Controller/Synthesizer (PianoLernen)</s>
+* <s>UI Framework</s>
  
 ### Object pool
 
