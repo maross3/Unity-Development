@@ -1,5 +1,5 @@
-# UnityUsefulScripts
- A collection of C# scripts written in Unity, for Unity. Come see all the awful broken things I made :D.
+# Unity Development
+ A collection of C# scripts written in Unity, for Unity
  
 README TODO:
 * Behavior Tree - needs scene
@@ -7,7 +7,7 @@ README TODO:
 * <s>Marching Cubes</s>
 * <s>MIDI Controller/Synthesizer (PianoLernen)</s>
 * <s>UI Framework</s>
- 
+* Add animation helper
 ### Object pool
 
 * Speed up prototyping and production with an easy-to-use object pool, designed with extensibility in mind.
