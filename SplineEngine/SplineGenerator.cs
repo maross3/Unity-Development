@@ -65,6 +65,11 @@ namespace _Dev.Attachment
         public int splineResolution = 10;
 
         /// <summary>
+        /// The line renderer to render the spine. Thank you r3dux :)
+        /// </summary>
+        private LineRenderer _lineRenderer;
+        
+        /// <summary>
         /// Generates the spline curve.
         /// </summary>
         /// <returns>The points in the resulting curve.</returns>
@@ -147,7 +152,7 @@ namespace _Dev.Attachment
             _lineRenderer.UpdateSplineRenderer(splinePoints);
             return splinePoints;
         }
-        private LineRenderer _lineRenderer;
+
         [Button(ButtonSizes.Medium)]
         public void DebugSpline()
         {
