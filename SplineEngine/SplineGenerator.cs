@@ -120,38 +120,55 @@ namespace _Dev.Attachment
         /// <remarks>Based on the Catmull-Rom spline algorithm. Use these points to create and initialize nodes.</remarks>
         private Vector3[] GeneratePointsOnSpline(int numPointsPerSegment, int numSegments)
         {
+            // Create an array to store the spline points.
             var splinePoints = new Vector3[numPointsPerSegment * numSegments];
+
+            // Calculate the step size between points on the spline based on the number of points per segment.
             var tStep = 1f / numPointsPerSegment;
 
+            // Iterate through each segment of the spline.
             for (var i = 0; i < numSegments - 1; i++)
             {
+                // Determine the indices of the control points for the spline segment.
                 var p0 = i == 0 ? 0 : i - 1;
                 var p2 = i == numSegments - 1 ? numSegments - 1 : i + 1;
                 var p3 = i == numSegments - 2 ? numSegments - 1 : i + 2;
-
+        
+                // Generate points for the current spline segment.
                 for (var j = 0; j < numPointsPerSegment; j++)
                 {
+                    // Calculate the parameter t for the current point on the spline.
                     var t = j * tStep;
+        
+                    // Calculate t^2 and t^3 for optimization.
                     var t2 = t * t;
                     var t3 = t2 * t;
-
-                    var pointOnSpline = 0.5f * ((2 * controlPoints[i].position) +
-                                                (-controlPoints[p0].position + controlPoints[p2].position) * t +
-                                                (2 * controlPoints[p0].position - 5 * controlPoints[i].position + 4 * controlPoints[p2].position - controlPoints[p3].position) * t2 +
-                                                (-controlPoints[p0].position + 3 * controlPoints[i].position - 3 * controlPoints[p2].position + controlPoints[p3].position) * t3);
-
-            
-                    
+        
+                    // Calculate the point on the spline using the Catmull-Rom formula.
+                    var pointOnSpline = 0.5f * (
+                        (2 * controlPoints[i].position) +
+                        (-controlPoints[p0].position + controlPoints[p2].position) * t +
+                        (2 * controlPoints[p0].position - 5 * controlPoints[i].position + 4 * controlPoints[p2].position - controlPoints[p3].position) * t2 +
+                        (-controlPoints[p0].position + 3 * controlPoints[i].position - 3 * controlPoints[p2].position + controlPoints[p3].position) * t3
+                    );
+        
+                    // Draw a magenta debug line from the point to the point with an offset upward.
                     Debug.DrawLine(pointOnSpline, pointOnSpline + Vector3.up, Color.magenta, 10.0f);
-                    if (pointOnSpline != Vector3.zero)    
+        
+                    // Store the point in the splinePoints array if it is not at the origin (Vector3.zero).
+                    if (pointOnSpline != Vector3.zero)
                         splinePoints[i * numPointsPerSegment + j] = pointOnSpline;
                 }
             }
+        
+            // Remove any points that are at the origin (Vector3.zero) from the array.
             splinePoints = splinePoints.Where(x => x != Vector3.zero).ToArray();
-            
+        
+            // Update the line renderer with the spline points and return the points array.
             _lineRenderer.UpdateSplineRenderer(splinePoints);
             return splinePoints;
         }
+
 
         [Button(ButtonSizes.Medium)]
         public void DebugSpline()
