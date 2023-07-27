@@ -65,7 +65,7 @@ namespace _Dev.Attachment
         public int splineResolution = 10;
 
         /// <summary>
-        /// The line renderer to render the spine. Thank you r3dux :)
+        /// The line renderer to render the spLine. Thank you r3dux... again :)
         /// </summary>
         private LineRenderer _lineRenderer;
         
