@@ -1,30 +1,31 @@
-using System;
-using UnityEngine;
+using PerformantOVRController.Hands.Poses;
 
-namespace VR
+namespace PerformantOVRController.Hands.HandStates
 {
-    public class HandClosed : MonoBehaviour, IHandState
+    public class HandClosed : HandStateClass
     {
         public HandPose statePose;
         public Hand thisHand;
 
-        public void EnterState()
+        public override HandState handState => HandState.Closed;
+
+        public override void EnterState()
         {
             thisHand.ChangePose(statePose);
             thisHand.GripUp += SwitchToOpenState;
         }
 
-        public void ExitState()
+        public override void ExitState()
         {
             thisHand.GripUp -= SwitchToOpenState;
         }
 
-        void SwitchToOpenState()
+        private void SwitchToOpenState()
         {
             thisHand.ChangeState(HandState.Open);
         }
         
-        public void OverrideToGrabbed()
+        public override void OverrideToGrabbed()
         {
             thisHand.ChangeState(HandState.Grabbed);
         }

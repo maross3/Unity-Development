@@ -1,25 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using PerformantOVRController.Hands.Poses;
 
-namespace VR
+namespace PerformantOVRController.Hands.HandStates
 {
-    public class HandTeleport : MonoBehaviour, IHandState
+    public class HandTeleport : HandStateClass
     {
+        public override HandState handState => HandState.Teleport;
+        
         public Hand thisHand;
         public HandPose statePose;
 
-        public void EnterState()
+
+        public override void EnterState()
         {
             thisHand.ChangePose(statePose);
         }
 
-        public void ExitState()
+        public override void ExitState()
         {
 
         }
 
-        public void OverrideToGrabbed()
+        public override void OverrideToGrabbed()
         {
             thisHand.ChangeState(HandState.Grabbed);
         }

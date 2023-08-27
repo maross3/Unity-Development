@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using ElectroMag._DevVR;
+﻿using System.Collections.Generic;
+using PerformantOVRController.Hands;
 using UnityEngine;
 
-namespace VR
+namespace PerformantOVRController.Locomotion
 {
-    public class Teleporter : MonoBehaviour, ILocomotion
+    public class Teleporter : MonoBehaviour, ILocomotionType
     {
         [SerializeField] private Hand _hand;
 
@@ -36,7 +35,7 @@ namespace VR
                 bodyTransforn.position = _groundPos + _lastNormal * 0.1f;
                 positionMarker.SetActive(false);
                 _arcRenderer.enabled = false;
-                _hand.ChangeState(HandState.Open);
+                _hand.ChangeState(Hands.HandState.Open);
             }
         }
         
@@ -118,15 +117,13 @@ namespace VR
         
         public void HandleInput()
         {
-            if (!OVRInput.Get(OVRInput.Button.One) && _teleporting) Teleport();
+            // if (!OVRInput.Get(OVRInput.Button.One) && _teleporting) Teleport();
             
-            if (OVRInput.Get(OVRInput.Button.One))
-                _hand.ChangeState(HandState.Teleport);
+            // if (OVRInput.Get(OVRInput.Button.One))
+                // _hand.ChangeState(HandState.Teleport);
 
-            if (_displayActive != OVRInput.Get(OVRInput.Button.One))
-                ToggleDisplay(OVRInput.Get(OVRInput.Button.One));
-
-
+            // if (_displayActive != OVRInput.Get(OVRInput.Button.One))
+                // ToggleDisplay(OVRInput.Get(OVRInput.Button.One));
         }
     }
 }

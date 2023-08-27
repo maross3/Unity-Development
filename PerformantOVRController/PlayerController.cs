@@ -1,9 +1,12 @@
 using System;
+using PerformantOVRController.Hands;
+using PerformantOVRController.Locomotion;
+using PerformantOVRController.Locomotion.Walker;
+using PerformantOVRController.Locomotion.Walker.Interfaces;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
-namespace VR
+namespace PerformantOVRController
 {
     public class PlayerController : MonoBehaviour, IPointerCaptureEvent
     {
@@ -16,9 +19,8 @@ namespace VR
         [SerializeField] public Hand leftHand;
         [SerializeField] public Hand rightHand;
         
-        private ILocomotion _locomotion;
         private LocomotionType _curLocomotion;
-        
+        private ILocomotionType _locomotion;
         private StateWalker _walk;
         private Teleporter _teleport;
         
@@ -56,7 +58,7 @@ namespace VR
 
             if(_curLocomotion != LocomotionType.None) _processInput += _locomotion.HandleInput;
             
-            OVRManager.InputFocusAcquired += _inputFocusAction;
+            // OVRManager.InputFocusAcquired += _inputFocusAction;
 
             leftHand.handSide = HandSide.Left;
             rightHand.handSide = HandSide.Right;

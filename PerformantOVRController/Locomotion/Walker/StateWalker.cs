@@ -1,21 +1,23 @@
-using UnityEngine;
 using System;
+using PerformantOVRController.Locomotion.Walker.Interfaces;
+using PerformantOVRController.Locomotion.Walker.WalkingStates;
+using UnityEngine;
 
-namespace VR
+namespace PerformantOVRController.Locomotion.Walker
 {
     public enum WalkStates
     {
-        idle,
-        jump,
-        sprint,
-        walk
+        Idle,
+        Jump,
+        Sprint,
+        Walk
     }
-    public class StateWalker : MonoBehaviour, ILocomotion
+    public class StateWalker : MonoBehaviour, ILocomotionType
     {
         public Vector2 thumbstickDeadZone;
         
-        private ILocomotionState currentState;
-        private Vector2 axis;
+        internal LocomotionState currentState;
+        private Vector2 _axis;
         [SerializeField] private float snapDistance;
         public float sprintSpeed;
         public float walkSpeed;
@@ -44,28 +46,22 @@ namespace VR
             buttonOneDown += VerboseInput;
             leftThumbStickUp += VerboseInput;
 
-            _idleState = gameObject.AddComponent<WalkStateIdle>();
-            _idleState._walker = this;
-            
-            _jumpState = gameObject.AddComponent<WalkStateJumping>();
-            _sprintState = gameObject.AddComponent<WalkStateSprinting>();
-            _walkState = gameObject.AddComponent<WalkStateWalking>();
-            
-            currentState = _idleState;
-            currentState.EnterState();
         }
 
-        void VerboseInput()
+        private static void VerboseInput()
         {
             //Debug.Log("input recieved");
         }
 
         public void HandleInput()
         {
-            if(ApplyDeadZones(OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick), thumbstickDeadZone.x, thumbstickDeadZone.y) != Vector2.zero) leftThumbStick.Invoke();
-            if(ApplyDeadZones(OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick), thumbstickDeadZone.x, thumbstickDeadZone.y).x != 0) rightStickXAxis.Invoke();
-            if(OVRInput.Get(OVRInput.Button.PrimaryThumbstick)) leftThumbStickDown.Invoke();
-            if (OVRInput.Get(OVRInput.Button.One)) buttonOneDown.Invoke();
+            currentState.HandleInput();
+            
+            // todo, deprecated OVR code:
+            // if(ApplyDeadZones(OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick), thumbstickDeadZone.x, thumbstickDeadZone.y) != Vector2.zero) leftThumbStick.Invoke();
+            // if(ApplyDeadZones(OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick), thumbstickDeadZone.x, thumbstickDeadZone.y).x != 0) rightStickXAxis.Invoke();
+            // if(OVRInput.Get(OVRInput.Button.PrimaryThumbstick)) leftThumbStickDown.Invoke();
+            // if (OVRInput.Get(OVRInput.Button.One)) buttonOneDown.Invoke();
         }
 
         public void ChangeState(WalkStates newState)
@@ -74,10 +70,10 @@ namespace VR
 
             currentState = newState switch
             {
-                WalkStates.idle => _idleState,
-                WalkStates.jump => _jumpState,
-                WalkStates.walk => _walkState,
-                WalkStates.sprint => _sprintState,
+                WalkStates.Idle => _idleState,
+                WalkStates.Jump => _jumpState,
+                WalkStates.Walk => _walkState,
+                WalkStates.Sprint => _sprintState,
                 _ => throw new Exception($"Wrong state: {currentState}")
             };
             
@@ -103,9 +99,9 @@ namespace VR
         public void RotateCharacter()
         {
             
-            axis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+            // axis = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
             transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y +
-                snapDistance * axis.x, transform.eulerAngles.z));
+                snapDistance * _axis.x, transform.eulerAngles.z));
         }
     }
 }
